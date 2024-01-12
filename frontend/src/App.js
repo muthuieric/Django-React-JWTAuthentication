@@ -8,9 +8,11 @@ import ResetPassword from "./Pages/ResetPassword";
 import ResetPasswordConfirm from "./Pages/ResetPasswordConfirm";
 import Signup from "./Pages/Signup";
 import Layout from "./High Order Function/Layout";
-import "./css/main.css";
+import "./App.css"
 import { Provider } from "react-redux";
 import Store from "./Store";
+import example from "./Pages/example";
+import imagine from "./Pages/imagine";
 
 const App = () => {
   return (
@@ -19,6 +21,8 @@ const App = () => {
         <Layout>
           <Routes>
             <Route exact path="/" Component={Home}></Route>
+            <Route exact path="example/" Component={example}></Route>
+            <Route exact path="imagine/" Component={imagine}></Route>
             <Route path="login/" Component={Login}></Route>
             <Route path="signup/" Component={Signup}></Route>
             <Route path="change/password/" Component={ChangePassword}></Route>

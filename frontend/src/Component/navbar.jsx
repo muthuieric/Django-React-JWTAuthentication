@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../reducer/Actions";
 
@@ -23,17 +23,27 @@ const Navbar = ({ logout, isAuthenticated }) => {
         </button>
         <div className="hidden lg:flex lg:items-center lg:ml-auto">
           <ul className="flex space-x-4">
-            <li>
-              <Link
-                className="text-white"
-                to="/"
-                activeClassName="font-bold"
-              >
-                Home
-              </Link>
-            </li>
+           
             {isAuthenticated ? (
               <>
+              <li>
+                <Link
+                    className="text-white"
+                    to="/example/"
+                    activeClassName="font-bold"
+                >
+                    Example
+                </Link>
+            </li>
+            <li>
+                <Link
+                    className="text-white"
+                    to="/imagine/"
+                    activeClassName="font-bold"
+                >
+                    Imagine
+                </Link>
+            </li>
                 <li>
                   <Link
                     className="text-white"
@@ -55,6 +65,17 @@ const Navbar = ({ logout, isAuthenticated }) => {
               </>
             ) : (
               <>
+
+            <li>
+                <Link
+                    className="text-white"
+                    to="/"
+                    activeClassName="font-bold"
+                >
+                    Home
+                </Link>
+            </li>
+
                 <li>
                   <Link
                     className="text-white"

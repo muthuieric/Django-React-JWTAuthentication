@@ -1,0 +1,19 @@
+.alert {
+    width: 400px;
+    position: absolute;
+    right: 20px;
+    top: 100px;
+    animation: alertFrame 1s;
+    color: white;
+    z-index: 99;
+}
+
+@keyframes alertFrame {
+    0% {
+        right: -500px;
+    }
+    100% {
+        right: 20px;
+    }
+}
+

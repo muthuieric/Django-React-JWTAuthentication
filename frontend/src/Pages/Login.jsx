@@ -20,16 +20,16 @@ const Login = ({ login, isAuthenticated }) => {
     login(email, password);
   };
 
-  const reachGoogle = () => {
-    const clientID = "Client Id Oauth google";
-    const callBackURI = "http://localhost:3000/";
-    window.location.replace(
-      `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${callBackURI}&prompt=consent&response_type=code&client_id=${clientID}&scope=openid%20email%20profile&access_type=offline`
-    );
-  };
+//   const reachGoogle = () => {
+//     const clientID = "Client Id Oauth google";
+//     const callBackURI = "http://localhost:3000/";
+//     window.location.replace(
+//       `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${callBackURI}&prompt=consent&response_type=code&client_id=${clientID}&scope=openid%20email%20profile&access_type=offline`
+//     );
+//   };
 
   if (isAuthenticated) {
-    return <Navigate to={"../"}></Navigate>;
+    return <Navigate to={"../example/"}></Navigate>;
   }
 
   return (
@@ -70,7 +70,7 @@ const Login = ({ login, isAuthenticated }) => {
               Login
             </button>
           </div>
-          <div className="d-grid gap-2 mt-2">
+          {/* <div className="d-grid gap-2 mt-2">
             <button
               className="btn btn-primary rounded-lg bg-blue-600 hover-bg-blue-800"
               type="button"
@@ -78,7 +78,7 @@ const Login = ({ login, isAuthenticated }) => {
             >
               Login With Google
             </button>
-          </div>
+          </div> */}
         </form>
         <p className="mt-4 text-center font-medium">
           Forgot your password? <Link to={"../reset/password/"} className="text-blue-500">Reset Password</Link>
