@@ -11,6 +11,7 @@ const Home = ({ refresh }) => {
                 <button className="btn btn-primary btn-lg" type="button" onClick={ refresh }>Refresh</button>
             </div>
         </div>
+        
     )
 }
 
