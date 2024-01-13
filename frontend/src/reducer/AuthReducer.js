@@ -54,7 +54,7 @@ const AuthReducer = (state=initialState, action) => {
                 ...state,
                 access: payload.access,
                 isAuthenticated: true,
-                message: "Refresh token success"
+                // message: "Refresh token success"
             }
         case TYPE.REFRESH_FAIL:
             localStorage.removeItem('access');
@@ -63,7 +63,7 @@ const AuthReducer = (state=initialState, action) => {
                 access: null,
                 isAuthenticated: false,
                 user: null,
-                message: "Refresh token fail"
+                // message: "Refresh token fail"
             }
         case TYPE.CHANGE_PASSWORD_SUCCESS:
             return {

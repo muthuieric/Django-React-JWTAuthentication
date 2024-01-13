@@ -1,102 +1,130 @@
-import React from "react";
-import { Link} from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../reducer/Actions";
 
 const Navbar = ({ logout, isAuthenticated }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleNavbar = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <nav className="bg-primary">
-      <div className="container mx-auto">
+    <nav className="bg-primary p-3 ">
+      <div className="container mx-auto flex justify-between items-center ">
         <Link className="text-white text-xl font-bold" to="/">
           VMS
         </Link>
-        <button
-          className="lg:hidden px-2 py-1 text-white"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+        <div className="flex items-center   ">
+          <div
+            className={`${
+              isOpen ? "block" : "hidden"
+            } lg:flex lg:items-center  `}
+          >
+      <ul className="flex flex-col lg:flex-row items-center absolute lg:relative left-0 bg-primary top-14 lg:top-0 w-full">
+  {isAuthenticated ? (
+    <>
+      <li className="mb-2">
+        <Link
+          className="text-white block md:inline-block md:mr-4 text-lg font-medium bold hover:underline"
+          to="/example/"
+          activeClassName="font-bold"
+          onClick={toggleNavbar}
         >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="hidden lg:flex lg:items-center lg:ml-auto">
-          <ul className="flex space-x-4">
-           
-            {isAuthenticated ? (
-              <>
-              <li>
-                <Link
-                    className="text-white"
-                    to="/example/"
-                    activeClassName="font-bold"
-                >
-                    Example
-                </Link>
-            </li>
-            <li>
-                <Link
-                    className="text-white"
-                    to="/imagine/"
-                    activeClassName="font-bold"
-                >
-                    Imagine
-                </Link>
-            </li>
-                <li>
-                  <Link
-                    className="text-white"
-                    to="/change/password/"
-                    activeClassName="font-bold"
-                  >
-                    Change Password
-                  </Link>
-                </li>
-                <li>
-                  <span
-                    className="text-white cursor-pointer"
-                    onClick={logout}
-                    id="logout"
-                  >
-                    Logout
-                  </span>
-                </li>
-              </>
-            ) : (
-              <>
+          Example
+        </Link>
+      </li>
+      <li className="mb-2">
+        <Link
+          className="text-white block md:inline-block md:mr-4 text-lg font-medium bold hover:underline"
+          to="/imagine/"
+          activeClassName="font-bold"
+          onClick={toggleNavbar}
+        >
+          Imagine
+        </Link>
+      </li>
+      <li className="mb-2">
+        <Link
+          className="text-white block md:inline-block md:mr-4 text-lg font-medium bold hover:underline"
+          to="/change/password/"
+          activeClassName="font-bold"
+          onClick={toggleNavbar}
+        >
+          Change Password
+        </Link>
+      </li>
+      <li className="mb-2">
+        <span
+          className="text-white block md:inline-block md:mr-4 text-lg font-medium bold hover:underline"
+          onClick={() => {
+            logout();
+            toggleNavbar();
+          }}
+          id="logout"
+        >
+          Logout
+        </span>
+      </li>
+    </>
+  ) : (
+    <>
+      <li className="mb-2">
+        <Link
+          className="text-white block md:inline-block md:mr-4 text-lg font-medium bold hover:underline"
+          to="/"
+          activeClassName="font-bold"
+          onClick={toggleNavbar}
+        >
+          Home
+        </Link>
+      </li>
+      <li className="mb-2">
+        <Link
+          className="text-white block md:inline-block md:mr-4 text-lg font-medium bold hover:underline  "
+          to="/login/"
+          activeClassName="font-bold"
+          onClick={toggleNavbar}
+        >
+          Login
+        </Link>
+      </li>
+      <li className="mb-2">
+        <Link
+          className="text-white block md:inline-block md:mr-4 text-lg font-medium bold hover:underline"
+          to="/signup/"
+          activeClassName="font-bold"
+          onClick={toggleNavbar}
+        >
+          Signup
+        </Link>
+      </li>
+    </>
+  )}
+</ul>
 
-            <li>
-                <Link
-                    className="text-white"
-                    to="/"
-                    activeClassName="font-bold"
-                >
-                    Home
-                </Link>
-            </li>
-
-                <li>
-                  <Link
-                    className="text-white"
-                    to="/login/"
-                    activeClassName="font-bold"
-                  >
-                    Login
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="text-white"
-                    to="/signup/"
-                    activeClassName="font-bold"
-                  >
-                    Signup
-                  </Link>
-                </li>
-              </>
-            )}
-          </ul>
+          </div>
+          <button
+            className="lg:hidden text-white"
+            type="button"
+            onClick={toggleNavbar}
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              ></path>
+            </svg>
+          </button>
         </div>
       </div>
     </nav>
