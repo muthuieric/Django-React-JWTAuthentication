@@ -1,6 +1,12 @@
 import React from "react";
+import { Navigate } from "react-router-dom";
+import { connect } from "react-redux";
 
-const example = () => {
+const example = ({ isAuthenticated }) => {
+  // Check if the user is not authenticated, then redirect to the login page
+  if (!isAuthenticated && !localStorage.getItem("access")) {
+    return <Navigate to={"../login"} />;
+  }
   return (
     <div className="container mx-auto mt-12">
       <div className="p-5 bg-light rounded-lg shadow-md">
@@ -18,4 +24,12 @@ const example = () => {
   );
 };
 
-export default example;
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.AuthReducer.isAuthenticated,
+  };
+};
+
+export default connect(mapStateToProps)(example);
+
+

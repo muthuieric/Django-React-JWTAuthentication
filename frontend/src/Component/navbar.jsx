@@ -6,6 +6,7 @@ import { logout } from "../reducer/Actions";
 const Navbar = ({ logout, isAuthenticated }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
