@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ChangePassword from "./Pages/ChangePassword";
 import EmailVerification from "./Pages/EmailVerification";
@@ -8,7 +9,6 @@ import ResetPassword from "./Pages/ResetPassword";
 import ResetPasswordConfirm from "./Pages/ResetPasswordConfirm";
 import Signup from "./Pages/Signup";
 import Layout from "./High Order Function/Layout";
-import "./App.css"
 import { Provider } from "react-redux";
 import Store from "./Store";
 import example from "./Pages/example";
